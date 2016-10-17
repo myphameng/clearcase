@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/"
+  debug="false">
+  
+  <!-- DEBUG < INFO < WARN < ERROR < FATAL -->
+  
+  <appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+    <param name="Threshold" value="INFO" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p  [%c{1}] %m %n" />
+    </layout>
+  </appender>
+
+  <appender name="ctFileAppender" class="org.apache.log4j.RollingFileAppender">
+    <param name="Threshold" value="INFO" />
+    <param name="File" value="scom.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p  [%c{1}] %m %n" />
+    </layout>
+  </appender>
+  
+  <appender name="wchFileAppender" class="org.apache.log4j.RollingFileAppender">
+    <param name="Threshold" value="INFO" />
+    <param name="File" value="scom.log" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="%d %-5p  [%c{1}] %m %n" />
+    </layout>
+  </appender>
+
+  <logger name="cleartool" additivity="false">
+    <level value="INFO" />
+    <appender-ref ref="consoleAppender" />
+    <appender-ref ref="ctFileAppender" />
+  </logger>
+  
+  <logger name="wch" additivity="false">
+    <level value="INFO" />
+    <appender-ref ref="consoleAppender" />
+    <appender-ref ref="wchFileAppender" />
+  </logger>
+
+</log4j:configuration>
